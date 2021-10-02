@@ -7,7 +7,7 @@ interface ICreateCategoryDTO {
 
 interface ICategoriesRepository {
   create({ name, description }: ICreateCategoryDTO): void;
-  read(): Category[];
+  list(): Category[];
   findByName(name: string): Category;
 }
 

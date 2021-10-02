@@ -1,10 +1,10 @@
 import { Category } from '../model/Category';
 import {
-  ICategoriesReposity,
+  ICategoriesRepository,
   ICreateCategoryDTO,
 } from './ICategoriesRepository';
 
-class CategoriesRepository implements ICategoriesReposity {
+class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[];
 
   constructor() {
@@ -23,7 +23,7 @@ class CategoriesRepository implements ICategoriesReposity {
     this.categories.push(category);
   }
 
-  read(): Category[] {
+  list(): Category[] {
     return this.categories;
   }
 
