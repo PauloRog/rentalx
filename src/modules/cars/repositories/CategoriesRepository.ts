@@ -1,14 +1,17 @@
 import { Category } from '../model/Category';
-import { ICreateCategoryDTO } from './ICategoriesRepository';
+import {
+  ICategoriesReposity,
+  ICreateCategoryDTO,
+} from './ICategoriesRepository';
 
-class CategoriesRepository {
+class CategoriesRepository implements ICategoriesReposity {
   private categories: Category[];
 
   constructor() {
     this.categories = [];
   }
 
-  create({ name, description }: ICreateCategoryDTO): Category {
+  create({ name, description }: ICreateCategoryDTO): void {
     const category = new Category();
 
     Object.assign(category, {
@@ -18,8 +21,6 @@ class CategoriesRepository {
     });
 
     this.categories.push(category);
-
-    return category;
   }
 
   read(): Category[] {
