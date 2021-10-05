@@ -42,10 +42,10 @@ class ImportCategoryUseCase {
 
     categories.map(async category => {
       const { name, description } = category;
-      const existCategory = this.categoriesReposity.findByName(name);
+      const existCategory = await this.categoriesReposity.findByName(name);
 
       if (!existCategory) {
-        this.categoriesReposity.create({
+        await this.categoriesReposity.create({
           name,
           description,
         });

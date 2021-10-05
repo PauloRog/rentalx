@@ -5,8 +5,8 @@ import { ListCategoriesUseCase } from './ListCategoriesUseCase';
 class ListCategoriesController {
   constructor(private listCategoriesUseCas: ListCategoriesUseCase) {}
 
-  handle(request: Request, response: Response): Response {
-    const categories = this.listCategoriesUseCas.execute();
+  async handle(request: Request, response: Response): Promise<Response> {
+    const categories = await this.listCategoriesUseCas.execute();
 
     return response.json(categories);
   }
