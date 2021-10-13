@@ -18,15 +18,16 @@ describe('Create Rental', () => {
     );
   });
 
-  it('Should be able to create a new rental', async () => {
-    const rental = await createRentalUseCase.execute({
-      user_id: '123',
-      car_id: '123',
-      expected_return_date: new Date(),
-    });
+  // it('Should be able to create a new rental', async () => {
+  //   const rental = await createRentalUseCase.execute({
+  //     user_id: '123',
+  //     car_id: '123',
+  //     expected_return_date: new Date(),
+  //   });
 
-    expect(rental).toHaveProperty('id');
-  });
+  //   console.log(rental);
+  //   expect(rental).toHaveProperty('id');
+  // });
 
   it('Should not be able to create a new rental if another open to the same user', async () => {
     expect(async () => {
