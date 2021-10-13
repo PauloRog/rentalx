@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
+import { inject, injectable } from 'tsyringe';
 
 import { ICreateRentalDTO } from '@modules/rentals/dtos/ICreateRentalDTO';
 import { Rental } from '@modules/rentals/infra/typeorm/entities/Rental';
@@ -9,9 +10,12 @@ import { AppError } from '@shared/errors/AppError';
 
 dayjs.extend(utc);
 
+@injectable()
 class CreateRentalUseCase {
   constructor(
+    @inject('RentalsRepository')
     private rentalsRepository: IRentalsRepository,
+    @inject('DayjsDateProvider')
     private dateProvider: IDateProvider,
   ) {}
 
