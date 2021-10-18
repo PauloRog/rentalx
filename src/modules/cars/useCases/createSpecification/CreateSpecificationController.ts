@@ -10,9 +10,14 @@ class CreateSpecificationController {
       CreateSpecificationUseCase,
     );
 
-    await createSpecificationUseCase.execute({ name, description });
+    const specification = await createSpecificationUseCase.execute({
+      name,
+      description,
+    });
 
-    return response.status(201).send();
+    delete specification.created_at;
+
+    return response.status(201).json(specification);
   }
 }
 
