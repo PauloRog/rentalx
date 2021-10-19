@@ -8,7 +8,7 @@ import { AppError } from '@shared/errors/AppError';
 
 interface IRequest {
   id: string;
-  user_id: string;
+  // user_id: string;
 }
 
 @injectable()
@@ -22,7 +22,7 @@ class DevolutionRentalUseCase {
     private dateProvider: IDateProvider,
   ) {}
 
-  async execute({ id, user_id }: IRequest): Promise<Rental> {
+  async execute({ id }: IRequest): Promise<Rental> {
     const minimum_daily = 1;
     let total = 0;
     const rental = await this.rentalsRepository.findById(id);
