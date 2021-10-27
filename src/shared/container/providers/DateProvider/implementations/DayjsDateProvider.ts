@@ -45,6 +45,12 @@ class DayjsDateProvider implements IDateProvider {
 
     return date;
   }
+
+  isBefore(start_date: Date, end_date: Date): boolean {
+    const isBefore = dayjs(start_date).isBefore(end_date);
+
+    return isBefore;
+  }
 }
 
 export { DayjsDateProvider };
