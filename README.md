@@ -53,3 +53,14 @@ Should be possible to register a rental
 The rent should have a minimum duration of 24 hours
 Should not be possible to register a new rental if there is already one open for the same user
 Should not be possible to register a new rental if there is already one open for the same car
+
+# Recover Password
+
+**FR**
+Should be possible for the user to recover the password by entering the email
+The user should receive an email with the step-by-step password recovery
+User should be able to enter a new password
+
+**BR**
+User needs to enter a new password
+Link sent for recovery must expire in 3 hours
