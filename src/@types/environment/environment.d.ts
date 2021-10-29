@@ -8,5 +8,7 @@ declare namespace NodeJS {
     AWS_BUCKET: string;
     AWS_BUCKET_REGION: string;
     DISK: string;
+    AWS_BUCKET_URL: string;
+    APP_URL: string;
   }
 }
