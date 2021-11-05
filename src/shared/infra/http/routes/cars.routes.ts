@@ -2,7 +2,7 @@ import { Router } from 'express';
 import multer from 'multer';
 
 import { CreateCarController } from '@modules/cars/useCases/createCar/CreateCarController';
-import { CreateCarSpecificationController } from '@modules/cars/useCases/createCarSpecification/CreateSpecificationController';
+import { CreateCarSpecificationController } from '@modules/cars/useCases/createCarSpecification/CreateCarSpecificationController';
 import { ListAvailableCarsController } from '@modules/cars/useCases/listCar/ListAvailableCarsController';
 import { UploadCarImageController } from '@modules/cars/useCases/uploadCarImage/UploadCarimageController';
 

@@ -1,8 +1,8 @@
 import { inject, injectable } from 'tsyringe';
 
 import { Category } from '@modules/cars/infra/typeorm/entities/Category';
+import { AlreadyExistsError } from '@shared/errors/AlreadyExistsError';
 
-import { AppError } from '../../../../shared/errors/AppError';
 import { ICategoriesRepository } from '../../repositories/ICategoriesRepository';
 
 interface IRequest {
@@ -23,7 +23,7 @@ class CreateCategoryUseCase {
     );
 
     if (categoryAlreadyExist) {
-      throw new AppError('Category already exists!');
+      throw new AlreadyExistsError('Category');
     }
 
     const category = this.categoriesRepository.create({ name, description });

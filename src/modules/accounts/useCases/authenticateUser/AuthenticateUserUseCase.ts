@@ -5,8 +5,8 @@ import { inject, injectable } from 'tsyringe';
 import auth from '@config/auth';
 import { IUserTokensRepository } from '@modules/accounts/repositories/IUserTokensRepository';
 import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';
+import { IncorrectEmailOrPasswordError } from '@shared/errors/IncorrectEmailOrPasswordError';
 
-import { AppError } from '../../../../shared/errors/AppError';
 import { IUsersRepository } from '../../repositories/IUsersRepository';
 
 interface IRequest {
@@ -45,13 +45,13 @@ class AuthenticateUserUseCase {
     } = auth;
 
     if (!user) {
-      throw new AppError('Email or password incorrect!', 401);
+      throw new IncorrectEmailOrPasswordError();
     }
 
     const passwordMatch = await compare(password, user.password);
 
     if (!passwordMatch) {
-      throw new AppError('Email or password incorrect!', 401);
+      throw new IncorrectEmailOrPasswordError();
     }
 
     const token = sign({}, secret_token, {

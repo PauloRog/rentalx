@@ -1,8 +1,8 @@
 import { inject, injectable } from 'tsyringe';
 
 import { Specification } from '@modules/cars/infra/typeorm/entities/Specification';
+import { AlreadyExistsError } from '@shared/errors/AlreadyExistsError';
 
-import { AppError } from '../../../../shared/errors/AppError';
 import { ISpecificationsRepository } from '../../repositories/ISpecificationsRepository';
 
 interface IRequest {
@@ -22,7 +22,7 @@ class CreateSpecificationUseCase {
       await this.specificationRepository.findByName(name);
 
     if (specificationAlreadyExist) {
-      throw new AppError('Specification already exists!');
+      throw new AlreadyExistsError('Specification');
     }
 
     const specification = await this.specificationRepository.create({

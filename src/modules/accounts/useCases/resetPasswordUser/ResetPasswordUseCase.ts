@@ -5,6 +5,7 @@ import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepositor
 import { IUserTokensRepository } from '@modules/accounts/repositories/IUserTokensRepository';
 import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';
 import { AppError } from '@shared/errors/AppError';
+import { JWTInvalidTokenError } from '@shared/errors/JWTInvalidTokenError';
 
 interface IRequest {
   token: string;
@@ -26,7 +27,7 @@ class ResetPasswordUseCase {
     const userToken = await this.userTokensRepository.findByRefreshToken(token);
 
     if (!userToken) {
-      throw new AppError('Token invalid!');
+      throw new JWTInvalidTokenError();
     }
 
     const isBefore = this.dateProvide.isBefore(

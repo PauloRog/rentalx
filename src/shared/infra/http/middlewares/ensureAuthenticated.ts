@@ -3,8 +3,8 @@ import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
 
 import auth from '@config/auth';
-
-import { AppError } from '../../../errors/AppError';
+import { JWTInvalidTokenError } from '@shared/errors/JWTInvalidTokenError';
+import { JWTTokenMissingError } from '@shared/errors/JWTTokenMissingError';
 
 interface IPayload {
   sub: string;
@@ -19,7 +19,7 @@ export async function ensureAuthenticated(
   const { secret_token } = auth;
 
   if (!authHeader) {
-    throw new AppError('Token missing', 401);
+    throw new JWTTokenMissingError();
   }
 
   const [, token] = authHeader.split(' ');
@@ -33,6 +33,6 @@ export async function ensureAuthenticated(
 
     next();
   } catch (error) {
-    throw new AppError('Invalid token!', 401);
+    throw new JWTInvalidTokenError();
   }
 }

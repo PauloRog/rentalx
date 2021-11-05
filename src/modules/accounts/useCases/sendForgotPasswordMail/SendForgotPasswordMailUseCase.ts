@@ -6,7 +6,7 @@ import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepositor
 import { IUserTokensRepository } from '@modules/accounts/repositories/IUserTokensRepository';
 import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';
 import { IMailProvider } from '@shared/container/providers/MailProvider/IMailProvider';
-import { AppError } from '@shared/errors/AppError';
+import { NotFoundError } from '@shared/errors/NotFoundError';
 
 @injectable()
 class SendForgotPasswordMailUseCase {
@@ -33,7 +33,7 @@ class SendForgotPasswordMailUseCase {
     );
 
     if (!user) {
-      throw new AppError('User does not exists!');
+      throw new NotFoundError('User');
     }
 
     const token = uuid();

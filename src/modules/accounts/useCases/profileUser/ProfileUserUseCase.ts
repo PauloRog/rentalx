@@ -3,7 +3,7 @@ import { inject, injectable } from 'tsyringe';
 import { IUserResponseDTO } from '@modules/accounts/dtos/IUserResponseDTO';
 import { UserMap } from '@modules/accounts/mappers/UserMap';
 import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
-import { AppError } from '@shared/errors/AppError';
+import { NotFoundError } from '@shared/errors/NotFoundError';
 
 @injectable()
 class ProfileUserUseCase {
@@ -16,7 +16,7 @@ class ProfileUserUseCase {
     const user = await this.usersRepository.findById(id);
 
     if (!user) {
-      throw new AppError('User does not exists!');
+      throw new NotFoundError('User');
     }
 
     return UserMap.toDTO(user);

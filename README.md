@@ -1,3 +1,60 @@
+# RENTALX API 🚗💸
+
+<p align="center">Application to control car rentals</p>
+
+<h4 align="center">
+	🚧  NodeJS Select 🚀 Under construction...  🚧
+</h4>
+
+### Features
+
+- [x] User and account registration
+- [x] Car registration
+- [x] Available car listing
+- [x] Car categories registration
+- [x] Category listing
+- [x] Car specification registration
+- [x] Specification listing
+- [x] Database access
+
+### Prerequisites
+
+Before starting, you will need to have the following tools installed on your machine.:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
+Besides, it's nice to have an editor to work with code like [VSCode](https://code.visualstudio.com/)
+
+### 🎲 Running the Back End (server)
+
+```bash
+# Clone this repository
+$ git clone <https://github.com/PauloRog/rentalx>
+
+# Access the project folder in the terminal/cmd
+$ cd rentalx
+
+# Install dependencies
+$ npm install
+
+# Run the application in development mode
+$ npm run dev:server
+
+# The server will start on port:3333 - access <http://localhost:3333>
+```
+API access documentation: http://localhost:3333/api-docs/
+
+### 🛠 Technologies
+
+The following tools were used in the construction of the project:
+
+- [Typescript](https://www.typescriptlang.org/)
+- [Node.js](https://nodejs.org/en/)
+- [Express.js](https://expressjs.com/pt-br/)
+- [Typeorm](https://typeorm.io/#/)
+- [Docker](https://www.docker.com/)
+- [Docker-compose](https://docs.docker.com/compose/)
+
+### Business requirements and rules
+
 # Car registration
 
 **FR**

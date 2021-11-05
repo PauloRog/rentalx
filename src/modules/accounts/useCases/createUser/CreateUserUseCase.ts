@@ -1,9 +1,10 @@
 import { hash } from 'bcrypt';
 import { inject, injectable } from 'tsyringe';
 
-import { User } from '@modules/accounts/infra/typeorm/entities/User';
+import { IUserResponseDTO } from '@modules/accounts/dtos/IUserResponseDTO';
+import { UserMap } from '@modules/accounts/mappers/UserMap';
+import { AlreadyExistsError } from '@shared/errors/AlreadyExistsError';
 
-import { AppError } from '../../../../shared/errors/AppError';
 import { ICreateUserDTO } from '../../dtos/ICreateUserDTO';
 import { IUsersRepository } from '../../repositories/IUsersRepository';
 
@@ -20,11 +21,11 @@ class CreateUserUseCase {
     email,
     password,
     driver_license,
-  }: ICreateUserDTO): Promise<User> {
+  }: ICreateUserDTO): Promise<IUserResponseDTO> {
     const userAlreadyExists = await this.usersRepository.findByEmail(email);
 
     if (userAlreadyExists) {
-      throw new AppError('User already exists!');
+      throw new AlreadyExistsError('User');
     }
     const passwordHash = await hash(password, 8);
 
@@ -36,10 +37,7 @@ class CreateUserUseCase {
       driver_license,
     });
 
-    delete user.password;
-    delete user.created_at;
-
-    return user;
+    return UserMap.toDTO(user);
   }
 }
 

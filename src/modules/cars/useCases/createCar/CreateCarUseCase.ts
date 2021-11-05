@@ -3,7 +3,7 @@ import { inject, injectable } from 'tsyringe';
 import { ICreateCarDTO } from '@modules/cars/dtos/ICreateCarDTO';
 import { Car } from '@modules/cars/infra/typeorm/entities/Car';
 import { ICarsRepository } from '@modules/cars/repositories/ICarsRepository';
-import { AppError } from '@shared/errors/AppError';
+import { AlreadyExistsError } from '@shared/errors/AlreadyExistsError';
 
 @injectable()
 class CreateCarUseCase {
@@ -26,7 +26,7 @@ class CreateCarUseCase {
     );
 
     if (carAlreadyExists) {
-      throw new AppError('Car already exists!');
+      throw new AlreadyExistsError('Car');
     }
 
     const car = await this.carsRepository.create({
