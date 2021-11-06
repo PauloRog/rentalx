@@ -35,7 +35,7 @@ class User {
   avatarUrl(): string {
     switch (process.env.DISK) {
       case 'local':
-        return `${process.env.APP_URL}/avatar/${this.avatar}`;
+        return `${process.env.APP_URL}:${process.env.PORT}/avatar/${this.avatar}`;
       case 's3':
         return `${process.env.AWS_BUCKET_URL}/avatar/${this.avatar}`;
       default:

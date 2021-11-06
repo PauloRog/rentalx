@@ -3,11 +3,10 @@ import { sign } from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
 
 import auth from '@config/auth';
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
 import { IUserTokensRepository } from '@modules/accounts/repositories/IUserTokensRepository';
 import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';
 import { IncorrectEmailOrPasswordError } from '@shared/errors/IncorrectEmailOrPasswordError';
-
-import { IUsersRepository } from '../../repositories/IUsersRepository';
 
 interface IRequest {
   email: string;

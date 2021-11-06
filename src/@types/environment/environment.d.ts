@@ -10,5 +10,11 @@ declare namespace NodeJS {
     DISK: string;
     AWS_BUCKET_URL: string;
     APP_URL: string;
+    SECRET_TOKEN: string;
+    EXPIRES_IN_TOKEN: string;
+    SECRETE_REFRESH_TOKEN: string;
+    EXPIRES_IN_REFRESH_TOKEN: string;
+    EXPIRES_REFRESH_TOKEN_DAYS: number;
+    PORT: number;
   }
 }

@@ -1,12 +1,11 @@
 import { hash } from 'bcrypt';
 import { inject, injectable } from 'tsyringe';
 
+import { ICreateUserDTO } from '@modules/accounts/dtos/ICreateUserDTO';
 import { IUserResponseDTO } from '@modules/accounts/dtos/IUserResponseDTO';
 import { UserMap } from '@modules/accounts/mappers/UserMap';
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
 import { AlreadyExistsError } from '@shared/errors/AlreadyExistsError';
-
-import { ICreateUserDTO } from '../../dtos/ICreateUserDTO';
-import { IUsersRepository } from '../../repositories/IUsersRepository';
 
 @injectable()
 class CreateUserUseCase {
