@@ -21,7 +21,7 @@ export class CreateUserTokens1635210431550 implements MigrationInterface {
           },
           {
             name: 'expires_date',
-            type: 'timestamps',
+            type: 'timestamp',
           },
           {
             name: 'created_at',

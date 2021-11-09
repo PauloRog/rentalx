@@ -27,7 +27,7 @@ carsRoutes.post(
 
 carsRoutes.get('/available', listAvailableCarsController.handle);
 
-carsRoutes.post(
+carsRoutes.patch(
   '/specifications/:id',
   ensureAuthenticated,
   ensureAdmin,

@@ -10,7 +10,7 @@ import { v4 as uuid } from 'uuid';
 
 import { User } from './User';
 
-@Entity('user_token')
+@Entity('user_tokens')
 class UserToken {
   @PrimaryColumn()
   id: string;

@@ -15,6 +15,8 @@ declare namespace NodeJS {
     SECRETE_REFRESH_TOKEN: string;
     EXPIRES_IN_REFRESH_TOKEN: string;
     EXPIRES_REFRESH_TOKEN_DAYS: number;
-    PORT: number;
+    APP_PORT: number;
+    APP_MAIL: string;
+    MAIL_PROVIDER: string;
   }
 }
